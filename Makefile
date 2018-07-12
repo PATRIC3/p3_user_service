@@ -27,30 +27,14 @@ PATH := $(DEPLOY_RUNTIME)/build-tools/bin:$(PATH)
 CONFIG          = p3-user.conf
 CONFIG_TEMPLATE = $(CONFIG).tt
 
-REDIS_HOST = beech.mcs.anl.gov
-REDIS_PORT = 6379
-REDIS_DB   = 1
-REDIS_PASS = 
-
 PRODUCTION = true
 MONGO_URL = mongodb://$(SERVICE_HOSTNAME)/p3-user-test
-WORKSPACE_API_URL = https://p3.theseed.org/services/Workspace
-DISTRIBUTE_URL = http://$(SERVICE_HOSTNAME):3001
-ENABLE_INDEXER = false
-JBROWSE_API_ROOT = https://www.beta.patricbrc.org/jbrowse
-PUBLIC_GENOME_DIR = /vol/patric3/downloads/genomes
-NUM_WORKERS = 4
-CACHE_ENABLED = false
 
 P3USER_SERVICE_URL = http://$(SERVICE_HOSTNAME):$(SERVICE_PORT)
 P3HOME_URL = http://$(SERVICE_HOSTNAME):3000
-P3USER_SIGNING_PRIVATE_PEM = $(shell pwd)/test-private-nokey.pem 
-P3USER_SIGNING_PUBLIC_PEM = $(shell pwd)/test-public.pem 
-P3USER_REALM = patricbrc.org
 
-COOKIE_SECRET = patric3
-COOKIE_KEY = patric3
-COOKIE_DOMAIN = $(shell echo $(SERVICE_HOSTNAME) | sed -e 's/^[^.][^.]*\././') 
+USER_TOKEN_DURATION = 4320
+SERVICE_TOKEN_DURATION = 4320
 
 SERVICE_PSGI = $(SERVICE_NAME).psgi
 TPAGE_ARGS = --define kb_runas_user=$(SERVICE_USER) \
@@ -65,28 +49,10 @@ TPAGE_ARGS = --define kb_runas_user=$(SERVICE_USER) \
 	--define p3user_production=$(PRODUCTION) \
 	--define p3user_service_port=$(SERVICE_PORT) \
 	--define p3user_mongo_url=$(MONGO_URL) \
-	--define p3user_workspace_api_url=$(WORKSPACE_API_URL) \
-	--define p3user_distribute_url=$(DISTRIBUTE_URL) \
-	--define p3user_enable_indexer=$(ENABLE_INDEXER) \
-	--define p3user_jbrowse_api_root=$(JBROWSE_API_ROOT) \
-	--define p3user_public_genome_dir=$(PUBLIC_GENOME_DIR) \
-	--define p3user_newrelic_license_key=$(NEWRELIC_LICENSE_KEY) \
-	--define p3user_num_workers=$(NUM_WORKERS) \
-	--define p3user_queue_directory=$(QUEUE_DIRECTORY) \
-	--define p3user_cache_enabled=$(CACHE_ENABLED) \
-	--define p3user_cache_directory=$(CACHE_DIRECTORY) \
 	--define p3user_service_url=$(P3USER_SERVICE_URL) \
-	--define p3user_signing_private_pem=$(P3USER_SIGNING_PRIVATE_PEM) \
-	--define p3user_signing_public_pem=$(P3USER_SIGNING_PUBLIC_PEM) \
-	--define p3user_realm=$(P3USER_REALM) \
 	--define p3_home_url=$(P3HOME_URL) \
-	--define redis_host=$(REDIS_HOST) \
-	--define redis_port=$(REDIS_PORT) \
-	--define redis_db=$(REDIS_DB) \
-	--define redis_pass=$(REDIS_PASS) \
-	--define cookie_key=$(COOKIE_KEY) \
-	--define cookie_secret=$(COOKIE_SECRET) \
-	--define cookie_domain=$(COOKIE_DOMAIN)
+	--define user_token_duration=$(USER_TOKEN_DURATION) \
+	--define service_token_duration=$(SERVICE_TOKEN_DURATION)
 
 # to wrap scripts and deploy them to $(TARGET)/bin using tools in
 # the dev_container. right now, these vars are defined in
