@@ -76,7 +76,6 @@ build-app:
 		export PATH=$$KB_RUNTIME/build-tools/bin:$$PATH LD_LIBRARY_PATH=$$KB_RUNTIME/build-tools/lib64 ; \
 		npm install; \
 		npm install forever
-	cd $(APP_DIR)/public; rm -f js; ln -s ../../../p3_web_service/p3_web/public/js .
 
 dist: 
 
