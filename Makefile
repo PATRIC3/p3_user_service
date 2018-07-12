@@ -10,9 +10,9 @@ SERVICE_PORT = 3002
 SERVICE_DIR  = $(SERVICE_NAME)
 SERVICE_APP_DIR      = $(TARGET)/services/$(SERVICE_DIR)/app
 
-APP_REPO     = git@github.com:olsonanl/p3_user.git
+#APP_REPO     = git@github.com:olsonanl/p3_user.git
 #APP_REPO     = https://github.com/olsonanl/p3_user.git
-#APP_REPO     = https://github.com/PATRIC3/p3_user.git
+APP_REPO     = https://github.com/PATRIC3/p3_user.git
 APP_DIR      = p3_user
 APP_SCRIPT   = ./bin/p3user-server
 
