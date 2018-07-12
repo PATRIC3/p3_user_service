@@ -1,34 +1,21 @@
 {
-        "http_port": [% kb_service_port %],
-	"production": [% p3user_production %],
-
-        "mongo": {
-                "url": "[% p3user_mongo_url %]"
-        },
-	"redis": {
-		"host": "[% redis_host %]",
-		"port": [% redis_port %],
-		"db": [% redis_db %],
-		"prefix": "",
-		"pass": "[% redis_pass %]"
-	},
-	"siteURL" : "[% p3user_service_url %]",
-	"p3Home" : "[% p3_home_url %]",
-        "patric3_webapp_callbackURL": "[% p3_home_url %]/auth/callback",
-	"signingSubjectURL": "[% p3user_service_url %]/public_key",
-	"signing_PEM": "[% p3user_signing_private_pem %]",
-	"signing_public_PEM": "[% p3user_signing_public_pem %]",
-	"realm": "[% p3user_realm %]",
-        "cookieSecret": "[% cookie_secret %]",
-        "cookieKey": "[% cookie_key %]",
-        "cookieDomain": "[% cookie_domain %]",
-	"email": {
-	    "localSendmail": false,
-	    "defaultFrom": "PATRIC <do-not-reply@patricbrc.org>",
-	    "defaultSender": "PATRIC <do-not-reply@patricbrc.org>",
-	    "host": "localhost",
-	    "port":25,
-	    "username": "",
-	    "password": ""
-       }
+  "http_port": [% kb_service_port %],
+  "production": [% p3user_production %],
+  "mongo": {
+    "url": "[% p3user_mongo_url %]"
+  },
+  "siteURL" : "[% p3user_service_url %]",
+  "p3Home" : "[% p3_home_url %]",
+  "signingSubjectURL": "[% p3user_service_url %]/public_key",
+  "userTokenDuration": [% user_token_duration %],
+  "serviceTokenDuration": [% service_token_duration %],
+  "email": {
+    "localSendmail": false,
+    "defaultFrom": "PATRIC <do-not-reply@patricbrc.org>",
+    "defaultSender": "PATRIC <do-not-reply@patricbrc.org>",
+    "host": "localhost",
+    "port":25,
+    "username": "",
+    "password": ""
+  }
 }
