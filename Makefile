@@ -14,7 +14,7 @@ SERVICE_APP_DIR      = $(TARGET)/services/$(SERVICE_DIR)/app
 #APP_REPO     = https://github.com/olsonanl/p3_user.git
 APP_REPO     = https://github.com/PATRIC3/p3_user.git
 APP_DIR      = p3_user
-APP_SCRIPT   = ./bin/p3user-server
+APP_SCRIPT   = bin/p3-user
 
 #
 # For now we use a fork of dme.
@@ -32,6 +32,8 @@ MONGO_URL = mongodb://$(SERVICE_HOSTNAME)/p3-user-test
 
 P3USER_SERVICE_URL = http://$(SERVICE_HOSTNAME):$(SERVICE_PORT)
 P3HOME_URL = http://$(SERVICE_HOSTNAME):3000
+P3USER_SIGNING_PRIVATE_PEM = $(shell pwd)/test-private-nokey.pem
+P3USER_SIGNING_PUBLIC_PEM = $(shell pwd)/test-public.pem
 
 USER_TOKEN_DURATION = 4320
 SERVICE_TOKEN_DURATION = 4320
@@ -50,6 +52,8 @@ TPAGE_ARGS = --define kb_runas_user=$(SERVICE_USER) \
 	--define p3user_service_port=$(SERVICE_PORT) \
 	--define p3user_mongo_url=$(MONGO_URL) \
 	--define p3user_service_url=$(P3USER_SERVICE_URL) \
+	--define p3user_signing_private_pem=$(P3USER_SIGNING_PRIVATE_PEM) \
+	--define p3user_signing_public_pem=$(P3USER_SIGNING_PUBLIC_PEM) \
 	--define p3_home_url=$(P3HOME_URL) \
 	--define user_token_duration=$(USER_TOKEN_DURATION) \
 	--define service_token_duration=$(SERVICE_TOKEN_DURATION)

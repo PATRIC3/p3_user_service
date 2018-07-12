@@ -7,6 +7,8 @@
   "siteURL" : "[% p3user_service_url %]",
   "p3Home" : "[% p3_home_url %]",
   "signingSubjectURL": "[% p3user_service_url %]/public_key",
+  "signing_PEM": "[% p3user_signing_private_pem %]",
+  "signing_public_PEM": "[% p3user_signing_public_pem %]",
   "userTokenDuration": [% user_token_duration %],
   "serviceTokenDuration": [% service_token_duration %],
   "email": {
